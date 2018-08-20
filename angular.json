@@ -121,6 +121,46 @@
           }
         }
       }
+    },
+    "animal-sdk": {
+      "root": "projects/animal-sdk",
+      "sourceRoot": "projects/animal-sdk/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/animal-sdk/tsconfig.lib.json",
+            "project": "projects/animal-sdk/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/animal-sdk/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/animal-sdk/src/test.ts",
+            "tsConfig": "projects/animal-sdk/tsconfig.spec.json",
+            "karmaConfig": "projects/animal-sdk/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/animal-sdk/tsconfig.lib.json",
+              "projects/animal-sdk/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "animal-sdk-demo"
