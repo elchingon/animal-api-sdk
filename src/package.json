@@ -1,0 +1,28 @@
+{
+  "name": "animal-sdk",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elchingon/app-api-sdk"
+  },
+  "author": {
+    "name": "Nicholas Mata",
+    "email": "nicholas@matadesigns.net"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elchingon/app-api-sdk/issues"
+  },
+  "main": "animal-sdk.umd.js",
+  "module": "animal-sdk.js",
+  "jsnext:main": "animal-sdk.js",
+  "typings": "animal-sdk.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}
