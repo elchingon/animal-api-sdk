@@ -15,16 +15,33 @@ import { AnimalSDKModule, AnimalSdkConfig, AnimalSDKService } from 'animal-sdk';
 })
 class AppComponent {
   constructor(public animalSdk: AnimalSDKService) {
-    animalSdk.didLogin = this.loggedIn.bind(this);
-  }
-
-  private loggedIn() {
-    console.log('Logged In');
-    this.animalSdk.getPages(1, 20).then(res => {
-      console.log(res);
-    }).catch(err => {
-      console.error(err);
+    // animalSdk.didLogin = this.loggedIn.bind(this);
+    this.animalSdk.pages.getAllPublished().then(res => {
+      res.items.forEach(basicPage => {
+        this.animalSdk.pages.get(basicPage.id);
+      });
     });
+
+    this.animalSdk.menuItems.getAll().then(res => {
+      console.log(res);
+    });
+
+    this.animalSdk.questions.getAllAnswered().then(res => {
+      console.log(res);
+    });
+
+    this.animalSdk.months.current().then(monthNumber => {
+      console.log('Current Month:', monthNumber);
+      this.animalSdk.months.get(monthNumber).then(month => {
+        console.log(month);
+      });
+    });
+
+    // this.animalSdk.postQuestion({ name: 'Nicholas Mata', email: 'nicholas@matadesigns.net', text: 'What is a giraffe' });
+
+    // this.animalSdk.getOrderedMonths(1, 20).then(months => {
+    //   console.log(months);
+    // });
   }
 }
 

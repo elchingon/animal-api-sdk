@@ -20,23 +20,25 @@ export interface AnimalSdkConfig {
     credientals: AnimalApiCredentials;
 }
 
-export interface PageImage {
+export interface Animal {
     /**
-     * Image identifier.
+     * Animal Identifier
      */
     id: number;
     /**
-     * Url to the image.
+     * The animals name.
      */
-    url: string;
+    name: string;
     /**
-     * Image's filename.
+     * The date the animal got pregenant.
      */
-    filename: string;
+    conceivedOn: string;
 }
 
-
-export interface Page {
+/***************
+ * Page Models
+ ***************/
+export interface BasicPage {
     /**
      * The page identifier.
      */
@@ -54,11 +56,30 @@ export interface Page {
      */
     body: string;
     /**
+     * The type of page.
+     * "log", "month"
+     */
+    pageType: string;
+    /**
+     * An array of images associated with this page.
+     */
+    imageUrls: [PageImage];
+    /**
+     * The time this page was created.
+     */
+    createdAt: string;
+    /**
+     * The last time this page was updated.
+     */
+    updatedAt: string;
+}
+
+export interface Page extends BasicPage {
+    /**
      * The page status.
      * "draft", "published"
      */
     status: string;
-    pageType: string;
     /**
      * A link to a video associated with this page.
      */
@@ -67,20 +88,78 @@ export interface Page {
      * A link to more information about this page.
      */
     moreInfoUrl?: string;
-    /**
-     * An array of images associated with this page.
-     */
-    imageUrls: [PageImage];
-    /**
-     * The last time this post was updated.
-     */
-    updatedAt: Date;
 }
 
+
+export interface PageImage {
+    /**
+     * Image identifier.
+     */
+    id: number;
+    /**
+     * Url to the image.
+     */
+    url: string;
+    /**
+     * Image's filename.
+     */
+    filename: string;
+}
+
+/*****************
+ * Question Models
+ *****************/
 export interface Question {
     /** Question Identifier */
     id: number;
+    /** The full name of the person who asked the question. */
+    name: string;
+    /** The email of the person who asked the question. */
+    email: string;
+    /** The question that was asked. */
+    text: string;
+    /** The status of the question
+     *  "asked", "answered"
+     */
+    status: string;
+    /** The response to the question. */
+    response: string;
+    /** The user id of the person who responsed. */
+    respondedById: number;
+    /** The date the question was created. */
+    createdAt: string;
+    /** The date the question was updated */
+    updatedAt: string;
 }
+
+export interface AskQuestion {
+    /** The full name of the person who asked the question. */
+    name: string;
+    /** The email of the person who asked the question. */
+    email: string;
+    /** The question that was asked. */
+    text: string;
+}
+
+/********************
+ *  Menu Item Models
+ ********************/
+
+export interface MenuItem {
+    /** MenuItem Identifier */
+    id: number;
+    /** The page identifier this menu item should go to. */
+    pageId: number;
+    /** The position on the menu item in the side bar. */
+    position: number;
+    /** The name of the menu item. */
+    name: string;
+}
+
+/******************
+ *  Paging Models
+ ******************/
+/** Models used for pagination. */
 
 export interface PagingMeta {
     /**
@@ -102,4 +181,25 @@ export interface PagingInfo<T> {
      * Paging information used when paginating.
      */
     meta: PagingMeta;
+}
+
+/*********
+ * Month
+ *********/
+export interface BasicMonth {
+    /** The month number */
+    number: number;
+    /** Basic Page Information */
+    page: BasicPage;
+}
+
+
+/*********
+ * Others
+ *********/
+
+export interface UrlParams {
+    pageNum?: number;
+    pageSize?: number;
+    search?: string;
 }
