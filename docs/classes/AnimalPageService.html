@@ -167,6 +167,9 @@
                         <a href="interfaces/MenuItem.html" data-type="entity-link">MenuItem</a>
                     </li>
                     <li class="link">
+                        <a href="interfaces/Month.html" data-type="entity-link">Month</a>
+                    </li>
+                    <li class="link">
                         <a href="interfaces/Page.html" data-type="entity-link">Page</a>
                     </li>
                     <li class="link">
@@ -372,6 +375,9 @@
                     </li>
                     <li class="link">
                         <a href="interfaces/MenuItem.html" data-type="entity-link">MenuItem</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/Month.html" data-type="entity-link">Month</a>
                     </li>
                     <li class="link">
                         <a href="interfaces/Page.html" data-type="entity-link">Page</a>
@@ -1017,7 +1023,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, InjectionToken, Inject } from &#x27;@angular/core&#x27;;
 import {
     AnimalSdkConfig, Page, PagingInfo, Question, BasicPage, Animal,
-    AskQuestion, MenuItem, BasicMonth, UrlParams
+    AskQuestion, MenuItem, BasicMonth, UrlParams, Month
 } from &#x27;./animal-sdk.models&#x27;;
 import { RailsApiClient } from &#x27;./rails-api-client&#x27;;
 import { ApiStorage, StorageStatus, StorageItem } from &#x27;./api-storage&#x27;;
@@ -1079,7 +1085,7 @@ export class AnimalPageService extends AnimalModelService&lt;Page, BasicPage&gt;
     }
 }
 
-export class AnimalMonthService extends AnimalModelService&lt;Page, BasicMonth&gt; {
+export class AnimalMonthService extends AnimalModelService&lt;Month, BasicMonth&gt; {
     private monthDiff(d1: Date, d2: Date): number {
         let months &#x3D; (d2.getFullYear() - d1.getFullYear()) * 12;
         months -&#x3D; d1.getMonth() + 1;

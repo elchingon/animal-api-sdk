@@ -167,6 +167,9 @@
                         <a href="interfaces/MenuItem.html" data-type="entity-link">MenuItem</a>
                     </li>
                     <li class="link">
+                        <a href="interfaces/Month.html" data-type="entity-link">Month</a>
+                    </li>
+                    <li class="link">
                         <a href="interfaces/Page.html" data-type="entity-link">Page</a>
                     </li>
                     <li class="link">
@@ -372,6 +375,9 @@
                     </li>
                     <li class="link">
                         <a href="interfaces/MenuItem.html" data-type="entity-link">MenuItem</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/Month.html" data-type="entity-link">Month</a>
                     </li>
                     <li class="link">
                         <a href="interfaces/Page.html" data-type="entity-link">Page</a>
@@ -873,7 +879,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/queue.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/queue.ts:34</a></div>
                             </td>
                         </tr>
 
@@ -918,25 +924,22 @@ export class Queue {
     }
 
     public add(promiseGenerator: () &#x3D;&gt; Promise&lt;any&gt;): Promise&lt;any&gt; {
-
-        const self &#x3D; this;
         return new Promise((res, rej) &#x3D;&gt; {
-            if (self._queue.length &gt;&#x3D; this.maxQueue) {
+            if (this._queue.length &gt;&#x3D; this.maxQueue) {
                 rej(new Error(&#x27;Queue limit reached&#x27;));
             }
 
-            self._queue.push({
+            this._queue.push({
                 promiseGenerator: promiseGenerator,
                 resolve: res,
                 reject: rej
             });
 
-            self.dequeue();
+            this.dequeue();
         });
     }
 
     private dequeue(): boolean {
-        const self &#x3D; this;
         if (this.pendingCount &gt;&#x3D; this._concurrency) {
             return false;
         }
@@ -947,21 +950,21 @@ export class Queue {
         }
 
         try {
-            self.pendingCount++;
+            this.pendingCount++;
             Promise.resolve(item.promiseGenerator())
                 .then((value) &#x3D;&gt; {
                     item.resolve(value);
-                    self.pendingCount--;
-                    self.dequeue();
+                    this.pendingCount--;
+                    this.dequeue();
                 }).catch(err &#x3D;&gt; {
                     item.reject(err);
-                    self.pendingCount--;
-                    self.dequeue();
+                    this.pendingCount--;
+                    this.dequeue();
                 });
         } catch (err) {
             item.reject(err);
-            self.pendingCount--;
-            self.dequeue();
+            this.pendingCount--;
+            this.dequeue();
         }
         return true;
     }

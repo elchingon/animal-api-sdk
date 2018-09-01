@@ -1,7 +1,7 @@
 import { Injectable, InjectionToken, Inject } from '@angular/core';
 import {
     AnimalSdkConfig, Page, PagingInfo, Question, BasicPage, Animal,
-    AskQuestion, MenuItem, BasicMonth, UrlParams
+    AskQuestion, MenuItem, BasicMonth, UrlParams, Month
 } from './animal-sdk.models';
 import { RailsApiClient } from './rails-api-client';
 import { ApiStorage, StorageStatus, StorageItem } from './api-storage';
@@ -24,6 +24,9 @@ export class AnimalModelService<T, K> {
      */
     public getAll(params: UrlParams = { pageNum: 1, pageSize: 20, search: null }): Promise<PagingInfo<K>> {
         const camelModel = RailsApiClient.toCamelCase(this.model);
+        if(!params.sort) {
+            params.sort = 'created_at desc'
+        }
         return this.client.callApi(() => this.buildAnimalUrl(this.animalGen().id), 'GET',
             params).then(res => {
                 ApiStorage.process(res[camelModel].map(p => {
@@ -63,7 +66,7 @@ export class AnimalPageService extends AnimalModelService<Page, BasicPage> {
     }
 }
 
-export class AnimalMonthService extends AnimalModelService<Page, BasicMonth> {
+export class AnimalMonthService extends AnimalModelService<Month, BasicMonth> {
     private monthDiff(d1: Date, d2: Date): number {
         let months = (d2.getFullYear() - d1.getFullYear()) * 12;
         months -= d1.getMonth() + 1;
@@ -87,7 +90,7 @@ export class AnimalMonthService extends AnimalModelService<Page, BasicMonth> {
      * @param params The url params.
      */
     public getAllOrdered(params: UrlParams = { pageNum: 1, pageSize: 20, search: null }): Promise<PagingInfo<BasicMonth>> {
-        params['sort'] = 'number asc';
+        params.sort = 'number asc';
         return this.getAll(params);
     }
 }

@@ -15,33 +15,35 @@ import { AnimalSDKModule, AnimalSdkConfig, AnimalSDKService } from 'animal-sdk';
 })
 class AppComponent {
   constructor(public animalSdk: AnimalSDKService) {
-    // animalSdk.didLogin = this.loggedIn.bind(this);
-    this.animalSdk.pages.getAllPublished().then(res => {
+    animalSdk.pages.getAllPublished().then(res => {
       res.items.forEach(basicPage => {
-        this.animalSdk.pages.get(basicPage.id);
+        animalSdk.pages.get(basicPage.id);
       });
     });
 
-    this.animalSdk.menuItems.getAll().then(res => {
+    animalSdk.menuItems.getAll().then(res => {
       console.log(res);
     });
 
-    this.animalSdk.questions.getAllAnswered().then(res => {
+    animalSdk.questions.getAllAnswered().then(res => {
       console.log(res);
     });
 
-    this.animalSdk.months.current().then(monthNumber => {
+    animalSdk.months.current().then(monthNumber => {
       console.log('Current Month:', monthNumber);
-      this.animalSdk.months.get(monthNumber).then(month => {
+      animalSdk.months.get(monthNumber).then(month => {
         console.log(month);
       });
     });
 
-    // this.animalSdk.postQuestion({ name: 'Nicholas Mata', email: 'nicholas@matadesigns.net', text: 'What is a giraffe' });
+    // animalSdk.postQuestion({ name: 'Nicholas Mata', email: 'nicholas@matadesigns.net', text: 'What is a giraffe' });
 
-    // this.animalSdk.getOrderedMonths(1, 20).then(months => {
-    //   console.log(months);
-    // });
+    animalSdk.months.getAllOrdered().then(months => {
+      console.log(months);
+      months.items.forEach(basicMonth => {
+        animalSdk.months.get(basicMonth.number);
+      });
+    });
   }
 }
 

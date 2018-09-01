@@ -33,6 +33,10 @@ export interface Animal {
      * The date the animal got pregenant.
      */
     conceivedOn: string;
+    /**
+     * The animals stream url.
+     */
+    streamUrl: string;
 }
 
 /***************
@@ -187,10 +191,21 @@ export interface PagingInfo<T> {
  * Month
  *********/
 export interface BasicMonth {
+    /** The month identifier */
+    id: number;
     /** The month number */
     number: number;
     /** Basic Page Information */
     page: BasicPage;
+    /** Timestamp of the last time either the month or the page was updated. */
+    updatedAt: string;
+}
+
+export interface Month extends BasicMonth {
+    /** The name of the month (This will override the page title) */
+    name: string;
+    /** The animal identifier this Month is for. */
+    animalId: number
 }
 
 
@@ -202,4 +217,5 @@ export interface UrlParams {
     pageNum?: number;
     pageSize?: number;
     search?: string;
+    sort?: string;
 }
