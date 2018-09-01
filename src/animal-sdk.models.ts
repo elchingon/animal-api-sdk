@@ -20,11 +20,14 @@ export interface AnimalSdkConfig {
     credientals: AnimalApiCredentials;
 }
 
-export interface Animal {
+export interface Identifiable {
     /**
-     * Animal Identifier
+     * Model Identifier
      */
     id: number;
+}
+
+export interface Animal extends Identifiable {
     /**
      * The animals name.
      */
@@ -42,11 +45,7 @@ export interface Animal {
 /***************
  * Page Models
  ***************/
-export interface BasicPage {
-    /**
-     * The page identifier.
-     */
-    id: number;
+export interface BasicPage extends Identifiable {
     /**
      * The page title.
      */
@@ -95,11 +94,7 @@ export interface Page extends BasicPage {
 }
 
 
-export interface PageImage {
-    /**
-     * Image identifier.
-     */
-    id: number;
+export interface PageImage extends Identifiable {
     /**
      * Url to the image.
      */
@@ -113,9 +108,7 @@ export interface PageImage {
 /*****************
  * Question Models
  *****************/
-export interface Question {
-    /** Question Identifier */
-    id: number;
+export interface Question extends Identifiable {
     /** The full name of the person who asked the question. */
     name: string;
     /** The email of the person who asked the question. */
@@ -149,9 +142,7 @@ export interface AskQuestion {
  *  Menu Item Models
  ********************/
 
-export interface MenuItem {
-    /** MenuItem Identifier */
-    id: number;
+export interface MenuItem extends Identifiable {
     /** The page identifier this menu item should go to. */
     pageId: number;
     /** The position on the menu item in the side bar. */
@@ -190,9 +181,7 @@ export interface PagingInfo<T> {
 /*********
  * Month
  *********/
-export interface BasicMonth {
-    /** The month identifier */
-    id: number;
+export interface BasicMonth extends Identifiable {
     /** The month number */
     number: number;
     /** Basic Page Information */
@@ -205,7 +194,7 @@ export interface Month extends BasicMonth {
     /** The name of the month (This will override the page title) */
     name: string;
     /** The animal identifier this Month is for. */
-    animalId: number
+    animalId: number;
 }
 
 

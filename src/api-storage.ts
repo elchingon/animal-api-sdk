@@ -16,7 +16,7 @@ export interface Updatable {
 
 export class ApiStorage {
     public static getKey(model: string, id: number): string {
-        return `${model}${id}`;
+        return `${model}/${id}`;
     }
     public static set(key: string, object: StorageItem<any>) {
         localStorage.setItem(key, JSON.stringify(object));

@@ -21,27 +21,25 @@ class AppComponent {
       });
     });
 
-    animalSdk.menuItems.getAll().then(res => {
-      console.log(res);
-    });
+    animalSdk.menuItems.getAll();
 
-    animalSdk.questions.getAllAnswered().then(res => {
-      console.log(res);
-    });
+    animalSdk.questions.getAllAnswered();
 
     animalSdk.months.current().then(monthNumber => {
-      console.log('Current Month:', monthNumber);
-      animalSdk.months.get(monthNumber).then(month => {
-        console.log(month);
-      });
+      animalSdk.months.get(monthNumber);
     });
 
     // animalSdk.postQuestion({ name: 'Nicholas Mata', email: 'nicholas@matadesigns.net', text: 'What is a giraffe' });
 
     animalSdk.months.getAllOrdered().then(months => {
-      console.log(months);
       months.items.forEach(basicMonth => {
         animalSdk.months.get(basicMonth.number);
+      });
+    });
+
+    animalSdk.menuItems.getAll().then(menuItems => {
+      menuItems.items.forEach(menuItem => {
+        animalSdk.menuItems.get(menuItem.id);
       });
     });
   }

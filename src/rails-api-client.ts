@@ -72,7 +72,7 @@ export class RailsApiClient {
         return headers;
     }
 
-    public buildUrl(model: string, id: number | null, apiVersion?: string): string {
+    public buildUrl(model: string, id?: number, apiVersion?: string): string {
         const baseApiUrl = `${this.domain}api/${(apiVersion || 'v1')}`;
         return this.buildResource(baseApiUrl, model, id);
     }
