@@ -166,12 +166,27 @@ export class QuestionService extends ModelService<Question, Question> {
 
 export class MenuItemService extends ModelService<MenuItem, MenuItem> { }
 
-export class AnimalService extends ModelService<Animal, Animal> { }
+export interface AnimalServiceOptions extends MonthServiceOptions { }
+export class AnimalService extends ModelService<Animal, Animal> {
+    animalGenerator: () => Animal;
+    constructor(client: RailsApiClient, model: string, options: MonthServiceOptions) {
+        super(client, model, options);
+        this.animalGenerator = options.animalGenerator;
+    }
+
+    public current(): Promise<Animal> {
+        return this.client.queue.add(() => {
+            return new Promise(res => {
+                return res(this.animalGenerator());
+            });
+        });
+    }
+}
 
 @Injectable()
 export class AnimalSDKService {
     protected client: RailsApiClient;
-    public currentAnimal: Animal;
+    private currentAnimal: Animal;
     public pages: PageService;
     public months: MonthService;
     public menuItems: MenuItemService;
@@ -181,26 +196,33 @@ export class AnimalSDKService {
     constructor(@Inject(AnimalSdkConfigService) private config: AnimalSdkConfig) {
         console.log('Connecting to Animal Api: ', this.config.domain);
         this.client = new RailsApiClient(config.domain);
-        const animalOptions: ModelServiceOptions = {
-            cache: true,
-            defaultSort: 'created_at desc',
-            pathGenerator: (model: string) => {
-                return `animals/${this.currentAnimal.id}/${model}`;
-            }
+        const sortByCreated = 'created_at desc';
+        const animalGen = () => this.currentAnimal;
+        const animalPathGen = (model: string) => {
+            return `animals/${this.currentAnimal.id}/${model}`;
         };
-        this.pages = new PageService(this.client, 'pages', animalOptions);
-        this.menuItems = new MenuItemService(this.client, 'menu_items', animalOptions);
-        this.questions = new QuestionService(this.client, 'questions', animalOptions);
-        const monthOptions: MonthServiceOptions = {
+        const nestedOptions: ModelServiceOptions = {
             cache: true,
-            defaultSort: 'created_at desc',
-            pathGenerator: (model: string) => {
-                return `animals/${this.currentAnimal.id}/${model}`;
-            },
-            animalGenerator: () => this.currentAnimal
+            defaultSort: sortByCreated,
+            pathGenerator: animalPathGen
         };
-        this.months = new MonthService(this.client, 'months', monthOptions);
-        this.animals = new AnimalService(this.client, 'animals');
+        this.pages = new PageService(this.client, 'pages', nestedOptions);
+        this.menuItems = new MenuItemService(this.client, 'menu_items', nestedOptions);
+        this.questions = new QuestionService(this.client, 'questions', nestedOptions);
+
+        this.months = new MonthService(this.client, 'months', {
+            cache: true,
+            defaultSort: sortByCreated,
+            pathGenerator: animalPathGen,
+            animalGenerator: animalGen
+        });
+
+        this.animals = new AnimalService(this.client, 'animals', {
+            cache: false,
+            defaultSort: sortByCreated,
+            animalGenerator: animalGen
+        });
+
         this.login();
         this.animals.get(1, animal => {
             this.currentAnimal = animal;

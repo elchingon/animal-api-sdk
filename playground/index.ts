@@ -42,6 +42,10 @@ class AppComponent {
         animalSdk.menuItems.get(menuItem.id);
       });
     });
+
+    animalSdk.animals.current().then(animal => {
+      console.log('Current Animal:', animal);
+    });
   }
 }
 

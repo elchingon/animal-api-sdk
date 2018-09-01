@@ -19,7 +19,9 @@ export class RailsApiClient {
         for (const d in obj) {
             if (obj.hasOwnProperty(d)) {
                 if (obj[d] == null) {
-                    newObj[d.split(/(?=[A-Z])/).join('_').toLowerCase()] = null;
+                    newObj[d.replace(/(\_\w)/g, (k) => {
+                        return k[1].toUpperCase();
+                    })] = null;
                     continue;
                 }
                 if (typeof obj[d] === 'object') {
