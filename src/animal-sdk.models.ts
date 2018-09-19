@@ -18,6 +18,10 @@ export interface AnimalSdkConfig {
      * The client credientals used when connecting to API.
      */
     credientals: AnimalApiCredentials;
+    /**
+     * The application id to register device token under for push notifications.
+     */
+    e7PushAppId?: string
 }
 
 export interface Animal {

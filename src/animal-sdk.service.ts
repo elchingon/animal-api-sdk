@@ -108,6 +108,10 @@ export class AnimalQuestionService extends AnimalModelService<Question, Question
 
 export class AnimalMenuItemService extends AnimalModelService<MenuItem, MenuItem> { }
 
+export enum DevicePlatform {
+    ios = 1, android
+}
+
 @Injectable()
 export class AnimalSDKService {
     client: RailsApiClient;
@@ -116,7 +120,9 @@ export class AnimalSDKService {
     public months: AnimalMonthService;
     public menuItems: AnimalMenuItemService;
     public questions: AnimalQuestionService;
+    public e7PushAppId?: string;
     constructor(@Inject(AnimalSdkConfigService) private config: AnimalSdkConfig) {
+        this.e7PushAppId = config.e7PushAppId;
         console.log('Connecting to Animal Api: ', this.config.domain);
         this.client = new RailsApiClient(config.domain);
         this.login();
@@ -126,6 +132,29 @@ export class AnimalSDKService {
         this.menuItems = new AnimalMenuItemService(this.client, 'menu_items', () => this.currentAnimal);
         this.questions = new AnimalQuestionService(this.client, 'questions', () => this.currentAnimal);
     }
+
+    /**
+     * Register device of push notifications at push.e7systems.com
+     * @param deviceToken The device unqiue identifier FCM(Android) or APNS(iOS)
+     * @param platform The platform of the device (ios or android)
+     */
+    public registerDevice(deviceToken: string, platform: DevicePlatform) {
+        if(this.e7PushAppId) {
+            fetch("http://pushapi.e7systems.com/api/devices",{
+                method: "POST",
+                body:  JSON.stringify({
+                    app_id: this.e7PushAppId,
+                    device: {
+                        id: deviceToken,
+                        platform: platform
+                    }
+                })
+            }).then(res => {
+                console.log("Device Registration Successful")
+            })
+        }
+    }
+    
 
     /**
      * Get a specific Animal.

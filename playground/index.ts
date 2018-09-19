@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { Component } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AnimalSDKModule, AnimalSdkConfig, AnimalSDKService } from 'animal-sdk';
+import { AnimalSDKModule, AnimalSdkConfig, AnimalSDKService, DevicePlatform } from 'animal-sdk';
 
 
 @Component({
@@ -15,6 +15,8 @@ import { AnimalSDKModule, AnimalSdkConfig, AnimalSDKService } from 'animal-sdk';
 })
 class AppComponent {
   constructor(public animalSdk: AnimalSDKService) {
+    animalSdk.registerDevice("PlaygroundTest", DevicePlatform.ios);
+
     animalSdk.pages.getAllPublished().then(res => {
       res.items.forEach(basicPage => {
         animalSdk.pages.get(basicPage.id);
@@ -52,7 +54,8 @@ const sdkConfig: AnimalSdkConfig = {
   credientals: {
     clientId: 'fe37790c248842058dcb0ceda63c75b295f27b0cfa21cbdf8b08620d0f28ea52',
     clientSecret: '53165961bb10003ef9e0cbedeb2403b4c64cea764f56d931a0579983d452a3cc'
-  }
+  },
+  e7PushAppId: "abd945b9-06a9-4342-9999-c5077a0511fb"
 };
 
 @NgModule({
