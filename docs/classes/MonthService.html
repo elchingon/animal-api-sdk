@@ -478,7 +478,7 @@
 
 <ol class="breadcrumb">
   <li>Classes</li>
-  <li>RailsApiClient</li>
+  <li>MonthService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -496,10 +496,16 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/rails-api-client.ts</code>
+            <code>src/animal-sdk.service.ts</code>
         </p>
 
 
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                    <code><a href="../classes/ModelService.html" target="_self" >ModelService</a></code>
+            </p>
 
 
 
@@ -516,20 +522,16 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#accessToken">accessToken</a>
+                                <a href="#animalGenerator">animalGenerator</a>
                             </li>
                             <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#domain">domain</a>
+                                <a href="#client">client</a>
                             </li>
                             <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#isAuth">isAuth</a>
+                                <a href="#model">model</a>
                             </li>
                             <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#queue">queue</a>
+                                <a href="#options">options</a>
                             </li>
                         </ul>
                     </td>
@@ -545,31 +547,27 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#buildResource">buildResource</a>
+                                <a href="#current">current</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#buildUrl">buildUrl</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#callApi">callApi</a>
+                                <a href="#getAllOrdered">getAllOrdered</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#headers">headers</a>
+                                <a href="#monthDiff">monthDiff</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#setAccessToken">setAccessToken</a>
+                                <a href="#get">get</a>
                             </li>
                             <li>
-                                    <span class="modifier">Static</span>
-                                <a href="#toCamelCase">toCamelCase</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#getAll">getAll</a>
                             </li>
                             <li>
-                                    <span class="modifier">Static</span>
-                                <a href="#toSnakeCase">toSnakeCase</a>
+                                    <span class="modifier">Private</span>
+                                <a href="#keyGenerator">keyGenerator</a>
                             </li>
                         </ul>
                     </td>
@@ -589,12 +587,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(domain: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>constructor(client: <a href="../classes/RailsApiClient.html">RailsApiClient</a>, model: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, options: <a href="../interfaces/MonthServiceOptions.html">MonthServiceOptions</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/rails-api-client.ts:54</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/animal-sdk.service.ts:112</a></div>
                             </td>
                         </tr>
 
@@ -612,10 +610,34 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>domain</td>
+                                                        <td>client</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../classes/RailsApiClient.html" target="_self" >RailsApiClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>model</td>
                                                   
                                                         <td>
                                                                     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>options</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../interfaces/MonthServiceOptions.html" target="_self" >MonthServiceOptions</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -641,19 +663,92 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="accessToken"></a>
+                        <a name="animalGenerator"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Private</span>
-                            accessToken
+                            animalGenerator
                             </b>
-                            <a href="#accessToken"><span class="fa fa-link"></span></a>
+                            <a href="#animalGenerator"><span class="fa fa-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <span class="modifier-icon fa fa-reset"></span><code>accessToken:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                        <code>animalGenerator:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/animal-sdk.service.ts:112</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="client"></a>
+                        <span class="name">
+                            <b>
+                            client
+                            </b>
+                            <a href="#client"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>client:     <code><a href="../classes/RailsApiClient.html" target="_self" >RailsApiClient</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../classes/RailsApiClient.html" target="_self" >RailsApiClient</a></code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/ModelService.html" target="_self" >ModelService</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in ModelService:25</div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="model"></a>
+                        <span class="name">
+                            <b>
+                            model
+                            </b>
+                            <a href="#model"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>model:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                     </td>
                 </tr>
@@ -663,9 +758,15 @@
 
                         </td>
                     </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/ModelService.html" target="_self" >ModelService</a></code>
+</div>
+                                </td>
+                            </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/rails-api-client.ts:6</a></div>
+                                    <div class="io-line">Defined in ModelService:26</div>
                             </td>
                         </tr>
 
@@ -676,99 +777,36 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="domain"></a>
+                        <a name="options"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Public</span>
-                            domain
+                            options
                             </b>
-                            <a href="#domain"><span class="fa fa-link"></span></a>
+                            <a href="#options"><span class="fa fa-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <span class="modifier-icon fa fa-reset"></span><code>domain:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                        <code>options:     <code><a href="../interfaces/ModelServiceOptions.html" target="_self" >ModelServiceOptions</a></code>
 </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                            <i>Type : </i>    <code><a href="../interfaces/ModelServiceOptions.html" target="_self" >ModelServiceOptions</a></code>
 
                         </td>
                     </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/ModelService.html" target="_self" >ModelService</a></code>
+</div>
+                                </td>
+                            </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/rails-api-client.ts:4</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="isAuth"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Public</span>
-                            isAuth
-                            </b>
-                            <a href="#isAuth"><span class="fa fa-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <span class="modifier-icon fa fa-reset"></span><code>isAuth:     <code></code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>false</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/rails-api-client.ts:5</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="queue"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Public</span>
-                            queue
-                            </b>
-                            <a href="#queue"><span class="fa fa-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <span class="modifier-icon fa fa-reset"></span><code>queue:     <code></code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>new Queue(Infinity)</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/rails-api-client.ts:7</a></div>
+                                    <div class="io-line">Defined in ModelService:40</div>
                             </td>
                         </tr>
 
@@ -786,33 +824,77 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="buildResource"></a>
+                        <a name="current"></a>
                         <span class="name">
                             <b>
                                 <span class="modifier">Public</span>
-                            buildResource
+                            current
                             </b>
-                            <a href="#buildResource"><span class="fa fa-link"></span></a>
+                            <a href="#current"><span class="fa fa-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
                             <span class="modifier-icon fa fa-reset"></span>
-                        <code>buildResource(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, model: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, id: number | null)</code>
+                        <code>current()</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/rails-api-client.ts:82</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/animal-sdk.service.ts:129</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Returns the current Month which the animal is in its pregnancy.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;number&gt;</code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getAllOrdered"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            getAllOrdered
+                            </b>
+                            <a href="#getAllOrdered"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span>
+                        <code>getAllOrdered(params: <a href="../interfaces/UrlParams.html">UrlParams</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/animal-sdk.service.ts:141</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Get all months in order by month number.</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -823,13 +905,14 @@
                                                     <td>Type</td>
                                                 <td>Optional</td>
                                                     <td>Default value</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>url</td>
+                                                        <td>params</td>
                                                         <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                                    <code><a href="../interfaces/UrlParams.html" target="_self" >UrlParams</a></code>
                                                         </td>
                                                     
                                                     <td>
@@ -837,37 +920,13 @@
                                                     </td>
                                                     
                                                         <td>
+                                                                <code>{ pageNum: 1, pageSize: 20, search: null }</code>
                                                         </td>
 
-                                                </tr>
-                                                <tr>
-                                                        <td>model</td>
                                                         <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                                <code><p>The url params.</p>
+</code>
                                                         </td>
-                                                    
-                                                    <td>
-                                                            no
-                                                    </td>
-                                                    
-                                                        <td>
-                                                        </td>
-
-                                                </tr>
-                                                <tr>
-                                                        <td>id</td>
-                                                        <td>
-                                                                    <code>number | null</code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            no
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <code>null</code>
-                                                        </td>
-
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -875,7 +934,7 @@
                             <div>
                             </div>
                             <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                <b>Returns : </b>    <code><a href="../interfaces/PagingInfo.html" target="_self" >Promise&lt;PagingInfo&lt;BasicMonth&gt;&gt;</a></code>
 
                             </div>
                                 <div class="io-description">
@@ -889,27 +948,27 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="buildUrl"></a>
+                        <a name="monthDiff"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Public</span>
-                            buildUrl
+                                <span class="modifier">Private</span>
+                            monthDiff
                             </b>
-                            <a href="#buildUrl"><span class="fa fa-link"></span></a>
+                            <a href="#monthDiff"><span class="fa fa-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
                             <span class="modifier-icon fa fa-reset"></span>
-                        <code>buildUrl(model: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, id?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, apiVersion?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                        <code>monthDiff(d1: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a>, d2: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a>)</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/rails-api-client.ts:77</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/animal-sdk.service.ts:119</a></div>
                             </td>
                         </tr>
 
@@ -929,9 +988,9 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>model</td>
+                                                        <td>d1</td>
                                                         <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
                                                         </td>
                                                     
                                                     <td>
@@ -940,6 +999,86 @@
                                                     
 
                                                 </tr>
+                                                <tr>
+                                                        <td>d2</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="get"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            get
+                            </b>
+                            <a href="#get"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span>
+                        <code>get(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, internal?: (json?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>) => void)</code>
+                    </td>
+                </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/ModelService.html" target="_self" >ModelService</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in ModelService:72</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Get an object by identifier.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
                                                 <tr>
                                                         <td>id</td>
                                                         <td>
@@ -947,19 +1086,190 @@
                                                         </td>
                                                     
                                                     <td>
-                                                            yes
+                                                            no
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>The model identifier</p>
+</code>
+                                                        </td>
                                                 </tr>
                                                 <tr>
-                                                        <td>apiVersion</td>
+                                                        <td>internal</td>
                                                         <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
                                                         </td>
                                                     
                                                     <td>
                                                             yes
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;Model&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getAll"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            getAll
+                            </b>
+                            <a href="#getAll"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span>
+                        <code>getAll(params: <a href="../interfaces/UrlParams.html">UrlParams</a>)</code>
+                    </td>
+                </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/ModelService.html" target="_self" >ModelService</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in ModelService:55</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Get all for objects for this model.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>params</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/UrlParams.html" target="_self" >UrlParams</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>{ pageNum: 1, pageSize: 20 }</code>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><p>url parameters</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../interfaces/PagingInfo.html" target="_self" >Promise&lt;PagingInfo&lt;BasicModel&gt;&gt;</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="keyGenerator"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            keyGenerator
+                            </b>
+                            <a href="#keyGenerator"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span>
+                        <code>keyGenerator(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    </td>
+                </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/ModelService.html" target="_self" >ModelService</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in ModelService:48</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>id</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            no
                                                     </td>
                                                     
 
@@ -971,377 +1281,6 @@
                             </div>
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="callApi"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Public</span>
-                            callApi
-                            </b>
-                            <a href="#callApi"><span class="fa fa-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span>
-                        <code>callApi(url: string | , method: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, params: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, then: (value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>) => void)</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/rails-api-client.ts:86</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                                    <td>Default value</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>url</td>
-                                                        <td>
-                                                                    <code>string | </code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            no
-                                                    </td>
-                                                    
-                                                        <td>
-                                                        </td>
-
-                                                </tr>
-                                                <tr>
-                                                        <td>method</td>
-                                                        <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            no
-                                                    </td>
-                                                    
-                                                        <td>
-                                                        </td>
-
-                                                </tr>
-                                                <tr>
-                                                        <td>params</td>
-                                                        <td>
-                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            no
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <code>null</code>
-                                                        </td>
-
-                                                </tr>
-                                                <tr>
-                                                        <td>then</td>
-                                                        <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            no
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <code>(value?: any) &#x3D;&gt; { }</code>
-                                                        </td>
-
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="headers"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            headers
-                            </b>
-                            <a href="#headers"><span class="fa fa-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span>
-                        <code>headers()</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/rails-api-client.ts:65</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Returns : </b>    <code>HeadersInit</code>
-
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="setAccessToken"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Public</span>
-                            setAccessToken
-                            </b>
-                            <a href="#setAccessToken"><span class="fa fa-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span>
-                        <code>setAccessToken(token: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/rails-api-client.ts:60</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>token</td>
-                                                        <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            no
-                                                    </td>
-                                                    
-
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="toCamelCase"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Static</span>
-                            toCamelCase
-                            </b>
-                            <a href="#toCamelCase"><span class="fa fa-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span>
-                        <code>toCamelCase(obj: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/rails-api-client.ts:9</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>obj</td>
-                                                        <td>
-                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            no
-                                                    </td>
-                                                    
-
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="toSnakeCase"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Static</span>
-                            toSnakeCase
-                            </b>
-                            <a href="#toSnakeCase"><span class="fa fa-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span>
-                        <code>toSnakeCase(obj: literal type)</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/rails-api-client.ts:38</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>obj</td>
-                                                        <td>
-                                                                    <code>literal type</code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            no
-                                                    </td>
-                                                    
-
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                             </div>
                                 <div class="io-description">
@@ -1362,147 +1301,247 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Queue } from &#x27;./queue&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, InjectionToken, Inject } from &#x27;@angular/core&#x27;;
+import {
+    AnimalSdkConfig, Page, PagingInfo, Question, BasicPage, Animal,
+    AskQuestion, MenuItem, BasicMonth, UrlParams, Month
+} from &#x27;./animal-sdk.models&#x27;;
+import { RailsApiClient } from &#x27;./rails-api-client&#x27;;
+import { ApiStorage, StorageStatus } from &#x27;./api-storage&#x27;;
 
-export class RailsApiClient {
-    public domain: string;
-    public isAuth &#x3D; false;
-    private accessToken: string;
-    public queue &#x3D; new Queue(Infinity);
+export const AnimalSdkConfigService &#x3D; new InjectionToken&lt;AnimalSdkConfig&gt;(&#x27;AnimalSdkConfig&#x27;);
 
-    public static toCamelCase(obj: any): any {
-        let newObj &#x3D; {};
-        if (typeof obj &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-            return obj.replace(/(\_\w)/g, (k) &#x3D;&gt; {
-                return k[1].toUpperCase();
+export interface ModelServiceOptions {
+    /** Whether or not the service should use caching. */
+    cache: boolean;
+    /** The default sort string. */
+    defaultSort: string;
+    /** A function that generators the path using the model */
+    pathGenerator?: (model: string) &#x3D;&gt; string;
+    /** A function that generators the key that will be used in ApiStorage when cache is ON. */
+    keyGenerator?: (id: number) &#x3D;&gt; string;
+}
+
+const defaultOptions: ModelServiceOptions &#x3D; { cache: false, defaultSort: &#x27;created_at desc&#x27; };
+
+export class ModelService&lt;Model, BasicModel&gt; {
+    client: RailsApiClient;
+    model: string;
+    protected get camelModel() {
+        return RailsApiClient.toCamelCase(this.model);
+    }
+    protected get modelUrl() {
+        return this.client.buildUrl(this.path);
+    }
+    protected get path() {
+        let path &#x3D; this.model;
+        if (this.options.pathGenerator) {
+            path &#x3D; this.options.pathGenerator(this.model);
+        }
+        return path;
+    }
+    options: ModelServiceOptions;
+
+    constructor(client: RailsApiClient, model: string, options: ModelServiceOptions &#x3D; defaultOptions) {
+        this.client &#x3D; client;
+        this.model &#x3D; model;
+        this.options &#x3D; options;
+    }
+
+    private keyGenerator(id: number): string {
+        return this.options.keyGenerator ? this.options.keyGenerator(id) : ApiStorage.getKey(this.path, id);
+    }
+    /**
+     *  Get all for objects for this model.
+     * @param params url parameters
+     */
+    public getAll(params: UrlParams &#x3D; { pageNum: 1, pageSize: 20 }): Promise&lt;PagingInfo&lt;BasicModel&gt;&gt; {
+        params.sort &#x3D; params.sort || this.options.defaultSort;
+        return this.client.callApi(() &#x3D;&gt; this.modelUrl, &#x27;GET&#x27;,
+            params).then(res &#x3D;&gt; {
+                if (this.options.cache) {
+                    ApiStorage.process(res[this.camelModel].map(p &#x3D;&gt; {
+                        return { id: p.id, model: this.model, updatedAt: p.updatedAt };
+                    }));
+                }
+                return { items: res[this.camelModel], meta: res.meta };
+            });
+    }
+
+    /**
+     * Get an object by identifier.
+     * @param id The model identifier
+     */
+    public get(id: number, internal?: (json: any) &#x3D;&gt; void): Promise&lt;Model&gt; {
+        const key &#x3D; this.keyGenerator(id);
+        const storedObj &#x3D; ApiStorage.get(key);
+
+        if (this.options.cache &amp;&amp; storedObj &amp;&amp; storedObj.status &#x3D;&#x3D;&#x3D; StorageStatus.valid) {
+            console.log(&#x60;Returning cached ${this.model}:&#x60;, storedObj);
+            return new Promise((res) &#x3D;&gt; {
+                if (internal) { internal(storedObj.item); }
+                return res(storedObj.item);
+            });
+        } else {
+            console.log(&#x60;Fetching ${this.model}/${id}&#x60;);
+            return this.client.callApi(() &#x3D;&gt; &#x60;${this.modelUrl}/${id}&#x60;, &#x27;GET&#x27;, null, json &#x3D;&gt; {
+                if (internal) { internal(json); }
+                if (this.options.cache) {
+                    ApiStorage.set(key, { item: json, status: StorageStatus.valid, updatedAt: json.updatedAt });
+                }
             });
         }
-        if (Array.isArray(obj)) {
-            newObj &#x3D; [];
-        }
-        for (const d in obj) {
-            if (obj.hasOwnProperty(d)) {
-                if (obj[d] &#x3D;&#x3D; null) {
-                    newObj[d.replace(/(\_\w)/g, (k) &#x3D;&gt; {
-                        return k[1].toUpperCase();
-                    })] &#x3D; null;
-                    continue;
-                }
-                if (typeof obj[d] &#x3D;&#x3D;&#x3D; &#x27;object&#x27;) {
-                    obj[d] &#x3D; this.toCamelCase(obj[d]);
-                }
-                newObj[d.replace(/(\_\w)/g, (k) &#x3D;&gt; {
-                    return k[1].toUpperCase();
-                })] &#x3D; obj[d];
-            }
-        }
-        return newObj;
+    }
+}
+
+export class PageService extends ModelService&lt;Page, BasicPage&gt; {
+    /**
+     * Get all the published log pages.
+     * aka search &#x3D; &#x27;status&#x3D;1,page_type&#x3D;log&#x27;
+     * @param params url parameters
+     */
+    public getAllPublished(params: UrlParams &#x3D; { pageNum: 1, pageSize: 20 }): Promise&lt;PagingInfo&lt;BasicPage&gt;&gt; {
+        params.search &#x3D; &#x27;status&#x3D;1,page_type&#x3D;log&#x27;;
+        return this.getAll(params);
+    }
+}
+
+export interface MonthServiceOptions extends ModelServiceOptions {
+    /** A function that generators a Animal */
+    animalGenerator: () &#x3D;&gt; Animal;
+}
+
+export class MonthService extends ModelService&lt;Month, BasicMonth&gt; {
+    animalGenerator: () &#x3D;&gt; Animal;
+
+    constructor(client: RailsApiClient, model: string, options: MonthServiceOptions) {
+        super(client, model, options);
+        this.animalGenerator &#x3D; options.animalGenerator;
     }
 
-    public static toSnakeCase(obj: {}): any {
-        const newObj &#x3D; {};
-
-        for (const d in obj) {
-            if (obj.hasOwnProperty(d)) {
-                if (obj[d] &#x3D;&#x3D; null) {
-                    newObj[d.split(/(?&#x3D;[A-Z])/).join(&#x27;_&#x27;).toLowerCase()] &#x3D; null;
-                    continue;
-                }
-                if (typeof obj[d] &#x3D;&#x3D;&#x3D; &#x27;object&#x27;) {
-                    obj[d] &#x3D; this.toSnakeCase(obj[d]);
-                }
-                newObj[d.split(/(?&#x3D;[A-Z])/).join(&#x27;_&#x27;).toLowerCase()] &#x3D; obj[d];
-            }
-        }
-        return newObj;
+    private monthDiff(d1: Date, d2: Date): number {
+        let months &#x3D; (d2.getFullYear() - d1.getFullYear()) * 12;
+        months -&#x3D; d1.getMonth() + 1;
+        months +&#x3D; d2.getMonth();
+        return months &lt;&#x3D; 0 ? 0 : months;
     }
 
-    constructor(domain: string) {
-        this.domain &#x3D; domain;
+    /**
+     * Returns the current Month which the animal is in its pregnancy.
+     */
+    public current(): Promise&lt;number&gt; {
+        return this.client.queue.add(() &#x3D;&gt; {
+            return new Promise((res) &#x3D;&gt; {
+                res(this.monthDiff(new Date(this.animalGenerator().conceivedOn), new Date()) + 1);
+            });
+        });
     }
 
-    public setAccessToken(token: string) {
-        this.accessToken &#x3D; token;
-        this.isAuth &#x3D; true;
+    /**
+     * Get all months in order by month number.
+     * @param params The url params.
+     */
+    public getAllOrdered(params: UrlParams &#x3D; { pageNum: 1, pageSize: 20, search: null }): Promise&lt;PagingInfo&lt;BasicMonth&gt;&gt; {
+        params.sort &#x3D; &#x27;number asc&#x27;;
+        return this.getAll(params);
+    }
+}
+
+export class QuestionService extends ModelService&lt;Question, Question&gt; {
+    /**
+     * Get only answered Questions.
+     * aka search &#x3D; &#x27;response !&#x3D; nil&#x27;
+     * @param params url parameters
+     */
+    public getAllAnswered(params: UrlParams &#x3D; { pageNum: 1, pageSize: 20, search: null }) {
+        params.search &#x3D; &#x27;response !&#x3D; nil&#x27;;
+        return this.getAll(params);
     }
 
-    private headers(): HeadersInit {
-        const headers: { [key: string]: string } &#x3D; {
-            &#x27;Content-Type&#x27;: &#x27;application/json&#x27;
+    /**
+     * Create a question with no answer.
+     * @param question Object used to create a question.
+     */
+    public ask(question: AskQuestion): Promise&lt;Question&gt; {
+        return this.client.callApi(this.modelUrl, &#x27;POST&#x27;, { question });
+    }
+}
+
+export class MenuItemService extends ModelService&lt;MenuItem, MenuItem&gt; { }
+
+export interface AnimalServiceOptions extends MonthServiceOptions { }
+export class AnimalService extends ModelService&lt;Animal, Animal&gt; {
+    animalGenerator: () &#x3D;&gt; Animal;
+    constructor(client: RailsApiClient, model: string, options: MonthServiceOptions) {
+        super(client, model, options);
+        this.animalGenerator &#x3D; options.animalGenerator;
+    }
+
+    public current(): Promise&lt;Animal&gt; {
+        return this.client.queue.add(() &#x3D;&gt; {
+            return new Promise(res &#x3D;&gt; {
+                return res(this.animalGenerator());
+            });
+        });
+    }
+}
+
+@Injectable()
+export class AnimalSDKService {
+    protected client: RailsApiClient;
+    private currentAnimal: Animal;
+    public pages: PageService;
+    public months: MonthService;
+    public menuItems: MenuItemService;
+    public questions: QuestionService;
+    public animals: AnimalService;
+
+    constructor(@Inject(AnimalSdkConfigService) private config: AnimalSdkConfig) {
+        console.log(&#x27;Connecting to Animal Api: &#x27;, this.config.domain);
+        this.client &#x3D; new RailsApiClient(config.domain);
+        const sortByCreated &#x3D; &#x27;created_at desc&#x27;;
+        const animalGen &#x3D; () &#x3D;&gt; this.currentAnimal;
+        const animalPathGen &#x3D; (model: string) &#x3D;&gt; {
+            return &#x60;animals/${this.currentAnimal.id}/${model}&#x60;;
         };
+        const nestedOptions: ModelServiceOptions &#x3D; {
+            cache: true,
+            defaultSort: sortByCreated,
+            pathGenerator: animalPathGen
+        };
+        this.pages &#x3D; new PageService(this.client, &#x27;pages&#x27;, nestedOptions);
+        this.menuItems &#x3D; new MenuItemService(this.client, &#x27;menu_items&#x27;, nestedOptions);
+        this.questions &#x3D; new QuestionService(this.client, &#x27;questions&#x27;, nestedOptions);
 
-        if (this.isAuth) {
-            headers[&#x27;Authorization&#x27;] &#x3D; &#x60;Bearer ${this.accessToken}&#x60;;
-        }
+        this.months &#x3D; new MonthService(this.client, &#x27;months&#x27;, {
+            cache: true,
+            defaultSort: sortByCreated,
+            pathGenerator: animalPathGen,
+            animalGenerator: animalGen
+        });
 
-        return headers;
+        this.animals &#x3D; new AnimalService(this.client, &#x27;animals&#x27;, {
+            cache: false,
+            defaultSort: sortByCreated,
+            animalGenerator: animalGen
+        });
+
+        this.login();
+        this.animals.get(1, animal &#x3D;&gt; {
+            this.currentAnimal &#x3D; animal;
+        });
     }
 
-    public buildUrl(model: string, id?: number, apiVersion?: string): string {
-        const baseApiUrl &#x3D; &#x60;${this.domain}api/${(apiVersion || &#x27;v1&#x27;)}&#x60;;
-        return this.buildResource(baseApiUrl, model, id);
-    }
-
-    public buildResource(url: string, model: string, id: number | null &#x3D; null): string {
-        return &#x60;${url}/${model}${id !&#x3D; null ? (&#x27;/&#x27; + id) : &#x27;&#x27;}&#x60;;
-    }
-
-    public callApi(url: string | (() &#x3D;&gt; string),
-        method: string,
-        params: any &#x3D; null,
-        then: (value?: any) &#x3D;&gt; void &#x3D; (value?: any) &#x3D;&gt; { }): Promise&lt;any&gt; {
-
-        return this.queue.add(() &#x3D;&gt; {
-            let jsonBody: string &#x3D; null;
-            let fullUrl &#x3D; url;
-            if (typeof fullUrl &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
-                fullUrl &#x3D; fullUrl();
-            }
-            if (method &#x3D;&#x3D;&#x3D; &#x27;GET&#x27;) {
-                if (params) {
-                    params &#x3D; RailsApiClient.toSnakeCase(params);
-
-                    const query &#x3D; Object.keys(params).map(key &#x3D;&gt; {
-                        const val &#x3D; params[key];
-                        if (!val) {
-                            return null;
-                        }
-                        return &#x60;${key}&#x3D;${params[key]}&#x60;;
-                    }).filter(val &#x3D;&gt; val !&#x3D; null).join(&#x27;&amp;&#x27;);
-                    fullUrl +&#x3D; &#x27;?&#x27; + query;
-                }
-            } else {
-                if (params) {
-                    params &#x3D; RailsApiClient.toSnakeCase(params);
-                    jsonBody &#x3D; JSON.stringify(params);
-                }
-            }
-            return fetch(fullUrl, {
-                body: jsonBody,
-                headers: this.headers(),
-                method,
-            }).then(res &#x3D;&gt; {
-                console.log(&#x60;${fullUrl} Response:&#x60;, res);
-                return res.json().then(json &#x3D;&gt; {
-                    const camelJson &#x3D; RailsApiClient.toCamelCase(json);
-                    camelJson._res &#x3D; res;
-                    switch (true) {
-                        case (res.status &gt;&#x3D; 200 &amp;&amp; res.status &lt; 300):
-                            console.log(&#x60;${fullUrl} Success:&#x60;, camelJson);
-                            break;
-                        case (res.status &#x3D;&#x3D;&#x3D; 404):
-                            console.warn(&#x60;${fullUrl} Warning:&#x60;, camelJson);
-                            throw camelJson;
-                        default:
-                            console.error(&#x60;${fullUrl} Failure:&#x60;, camelJson);
-                            throw camelJson;
-                    }
-                    return camelJson;
-                });
-            }).then(json &#x3D;&gt; {
-                then(json);
-                return json;
-            });
+    private login() {
+        const url &#x3D; this.client.domain + &#x27;oauth/token&#x27;;
+        console.log(&#x27;Logging In&#x27;);
+        this.client.callApi(url, &#x27;POST&#x27;, {
+            clientId: this.config.credientals.clientId,
+            clientSecret: this.config.credientals.clientSecret,
+            grantType: &#x27;client_credentials&#x27;
+        }, json &#x3D;&gt; {
+            this.client.setAccessToken(json.accessToken);
+            return json;
         });
     }
 }
@@ -1541,7 +1580,7 @@ export class RailsApiClient {
         <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'RailsApiClient.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'MonthService.html';
         </script>
 
        <script src="../js/search/search.js"></script>

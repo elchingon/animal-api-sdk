@@ -19,7 +19,9 @@ export class RailsApiClient {
         for (const d in obj) {
             if (obj.hasOwnProperty(d)) {
                 if (obj[d] == null) {
-                    newObj[d.split(/(?=[A-Z])/).join('_').toLowerCase()] = null;
+                    newObj[d.replace(/(\_\w)/g, (k) => {
+                        return k[1].toUpperCase();
+                    })] = null;
                     continue;
                 }
                 if (typeof obj[d] === 'object') {
@@ -72,7 +74,7 @@ export class RailsApiClient {
         return headers;
     }
 
-    public buildUrl(model: string, id: number | null, apiVersion?: string): string {
+    public buildUrl(model: string, id?: number, apiVersion?: string): string {
         const baseApiUrl = `${this.domain}api/${(apiVersion || 'v1')}`;
         return this.buildResource(baseApiUrl, model, id);
     }
