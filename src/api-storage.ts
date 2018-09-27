@@ -9,8 +9,7 @@ export class StorageItem<T> {
 }
 
 export interface Updatable {
-    id: number;
-    model: string;
+    key: string;
     updatedAt: string;
 }
 
@@ -28,11 +27,10 @@ export class ApiStorage {
 
     public static process(updatables: [Updatable]) {
         updatables.forEach(updatable => {
-            const key = ApiStorage.getKey(updatable.model, updatable.id);
-            const storedObj = ApiStorage.get(key);
+            const storedObj = ApiStorage.get(updatable.key);
             if (storedObj != null && new Date(storedObj.updatedAt) < new Date(updatable.updatedAt)) {
                 storedObj.status = StorageStatus.invalid;
-                ApiStorage.set(key, storedObj);
+                ApiStorage.set(updatable.key, storedObj);
             }
         });
     }

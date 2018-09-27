@@ -58,7 +58,7 @@ export class ModelService<Model, BasicModel> {
             params).then(res => {
                 if (this.options.cache) {
                     ApiStorage.process(res[this.camelModel].map(p => {
-                        return { id: p.id, model: this.model, updatedAt: p.updatedAt };
+                        return { key: this.keyGenerator(p.id), updatedAt: p.updatedAt };
                     }));
                 }
                 return { items: res[this.camelModel], meta: res.meta };
