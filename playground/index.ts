@@ -42,6 +42,7 @@ class AppComponent {
     animalSdk.menuItems.getAll().then(menuItems => {
       menuItems.items.forEach(menuItem => {
         animalSdk.menuItems.get(menuItem.id);
+        animalSdk.pages.get(menuItem.pageId);
       });
     });
 

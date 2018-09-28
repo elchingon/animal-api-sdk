@@ -153,6 +153,8 @@ export interface MenuItem extends Identifiable {
     position: number;
     /** The name of the menu item. */
     name: string;
+    /** A timestamp representing the last time the page for the menu item was updated */
+    pageUpdatedAt: string;
 }
 
 /******************

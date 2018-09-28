@@ -4,9 +4,12 @@ import {
     AskQuestion, MenuItem, BasicMonth, UrlParams, Month
 } from './animal-sdk.models';
 import { RailsApiClient } from './rails-api-client';
-import { ApiStorage, StorageStatus } from './api-storage';
+import { ApiStorage, StorageStatus, Updatable } from './api-storage';
 
 export const AnimalSdkConfigService = new InjectionToken<AnimalSdkConfig>('AnimalSdkConfig');
+
+export type KeyGenerator = (id: number, obj?: any) => string
+export type StorageProcessor = (items: [any]) => Updatable[]
 
 export interface ModelServiceOptions {
     /** Whether or not the service should use caching. */
@@ -16,7 +19,9 @@ export interface ModelServiceOptions {
     /** A function that generators the path using the model */
     pathGenerator?: (model: string) => string;
     /** A function that generators the key that will be used in ApiStorage when cache is ON. */
-    keyGenerator?: (id: number) => string;
+    keyGenerator?: KeyGenerator;
+    /** An array of processors whos result will be used in ApiStorage,process to invalidate item based on timestamp and key. */
+    processors?: [StorageProcessor];
 }
 
 const defaultOptions: ModelServiceOptions = { cache: false, defaultSort: 'created_at desc' };
@@ -45,8 +50,8 @@ export class ModelService<Model, BasicModel> {
         this.options = options;
     }
 
-    private keyGenerator(id: number): string {
-        return this.options.keyGenerator ? this.options.keyGenerator(id) : ApiStorage.getKey(this.path, id);
+    private keyGenerator(id: number, obj?: any): string {
+        return this.options.keyGenerator ? this.options.keyGenerator(id, obj) : ApiStorage.getKey(this.path, id);
     }
     /**
      *  Get all for objects for this model.
@@ -57,9 +62,16 @@ export class ModelService<Model, BasicModel> {
         return this.client.callApi(() => this.modelUrl, 'GET',
             params).then(res => {
                 if (this.options.cache) {
+
                     ApiStorage.process(res[this.camelModel].map(p => {
-                        return { key: this.keyGenerator(p.id), updatedAt: p.updatedAt };
+                        return { key: this.keyGenerator(p.id, p), updatedAt: p.updatedAt };
                     }));
+
+                    if (this.options.processors) {
+                        var processorsUpdatables: Updatable[][] = this.options.processors!.map(p => p(res[this.camelModel]));
+                        var updatables: Updatable[] = processorsUpdatables.reduce((a, b) => a.concat(b), [])
+                        ApiStorage.process(updatables);
+                    }
                 }
                 return { items: res[this.camelModel], meta: res.meta };
             });
@@ -212,7 +224,12 @@ export class AnimalSDKService {
             pathGenerator: animalPathGen
         };
         this.pages = new PageService(this.client, 'pages', nestedOptions);
-        this.menuItems = new MenuItemService(this.client, 'menu_items', nestedOptions);
+        this.menuItems = new MenuItemService(this.client, 'menu_items', {
+            cache: true,
+            defaultSort: sortByCreated,
+            pathGenerator: animalPathGen,
+            processors: [(items: MenuItem[]) => items.map(mi => { return { key: `animals/${this.currentAnimal.id}/pages/${mi.pageId}`, updatedAt: mi.pageUpdatedAt }; })]
+        });
         this.questions = new QuestionService(this.client, 'questions', nestedOptions);
 
         this.months = new MonthService(this.client, 'months', {
@@ -240,10 +257,10 @@ export class AnimalSDKService {
      * @param platform The platform of the device (ios or android)
      */
     public registerDevice(deviceToken: string, platform: DevicePlatform) {
-        if(this.e7PushAppId) {
-            fetch("http://pushapi.e7systems.com/api/devices",{
+        if (this.e7PushAppId) {
+            fetch("http://pushapi.e7systems.com/api/devices", {
                 method: "POST",
-                body:  JSON.stringify({
+                body: JSON.stringify({
                     app_id: this.e7PushAppId,
                     device: {
                         id: deviceToken,
