@@ -49,6 +49,10 @@ class AppComponent {
     animalSdk.animals.current().then(animal => {
       console.log('Current Animal:', animal);
     });
+
+    animalSdk.animals.getYoutubeId(1).then(youtubeVideoId => {
+      console.log("Youtube Video Id", youtubeVideoId);
+    });
   }
 }
 

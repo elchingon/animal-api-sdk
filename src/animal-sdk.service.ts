@@ -193,6 +193,12 @@ export class AnimalService extends ModelService<Animal, Animal> {
             });
         });
     }
+
+    public getYoutubeId(id: number): Promise<string> {
+        return this.client.callApi(this.modelUrl + `/${id}/live`, 'GET').then(json => {
+            return json.youtubeVideoId;
+        });
+    }
 }
 
 export enum DevicePlatform {
