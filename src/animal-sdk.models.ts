@@ -18,29 +18,38 @@ export interface AnimalSdkConfig {
      * The client credientals used when connecting to API.
      */
     credientals: AnimalApiCredentials;
+    /**
+     * The application id to register device token under for push notifications.
+     */
+    e7PushAppId?: string
 }
 
-export interface PageImage {
+export interface Identifiable {
     /**
-     * Image identifier.
+     * Model Identifier
      */
     id: number;
-    /**
-     * Url to the image.
-     */
-    url: string;
-    /**
-     * Image's filename.
-     */
-    filename: string;
 }
 
-
-export interface Page {
+export interface Animal extends Identifiable {
     /**
-     * The page identifier.
+     * The animals name.
      */
-    id: number;
+    name: string;
+    /**
+     * The date the animal got pregenant.
+     */
+    conceivedOn: string;
+    /**
+     * The animals stream url.
+     */
+    streamUrl: string;
+}
+
+/***************
+ * Page Models
+ ***************/
+export interface BasicPage extends Identifiable {
     /**
      * The page title.
      */
@@ -54,11 +63,30 @@ export interface Page {
      */
     body: string;
     /**
+     * The type of page.
+     * "log", "month"
+     */
+    pageType: string;
+    /**
+     * An array of images associated with this page.
+     */
+    imageUrls: [PageImage];
+    /**
+     * The time this page was created.
+     */
+    createdAt: string;
+    /**
+     * The last time this page was updated.
+     */
+    updatedAt: string;
+}
+
+export interface Page extends BasicPage {
+    /**
      * The page status.
      * "draft", "published"
      */
     status: string;
-    pageType: string;
     /**
      * A link to a video associated with this page.
      */
@@ -67,20 +95,72 @@ export interface Page {
      * A link to more information about this page.
      */
     moreInfoUrl?: string;
-    /**
-     * An array of images associated with this page.
-     */
-    imageUrls: [PageImage];
-    /**
-     * The last time this post was updated.
-     */
-    updatedAt: Date;
 }
 
-export interface Question {
-    /** Question Identifier */
-    id: number;
+
+export interface PageImage extends Identifiable {
+    /**
+     * Url to the image.
+     */
+    url: string;
+    /**
+     * Image's filename.
+     */
+    filename: string;
 }
+
+/*****************
+ * Question Models
+ *****************/
+export interface Question extends Identifiable {
+    /** The full name of the person who asked the question. */
+    name: string;
+    /** The email of the person who asked the question. */
+    email: string;
+    /** The question that was asked. */
+    text: string;
+    /** The status of the question
+     *  "asked", "answered"
+     */
+    status: string;
+    /** The response to the question. */
+    response: string;
+    /** The user id of the person who responsed. */
+    respondedById: number;
+    /** The date the question was created. */
+    createdAt: string;
+    /** The date the question was updated */
+    updatedAt: string;
+}
+
+export interface AskQuestion {
+    /** The full name of the person who asked the question. */
+    name: string;
+    /** The email of the person who asked the question. */
+    email: string;
+    /** The question that was asked. */
+    text: string;
+}
+
+/********************
+ *  Menu Item Models
+ ********************/
+
+export interface MenuItem extends Identifiable {
+    /** The page identifier this menu item should go to. */
+    pageId: number;
+    /** The position on the menu item in the side bar. */
+    position: number;
+    /** The name of the menu item. */
+    name: string;
+    /** A timestamp representing the last time the page for the menu item was updated */
+    pageUpdatedAt: string;
+}
+
+/******************
+ *  Paging Models
+ ******************/
+/** Models used for pagination. */
 
 export interface PagingMeta {
     /**
@@ -102,4 +182,35 @@ export interface PagingInfo<T> {
      * Paging information used when paginating.
      */
     meta: PagingMeta;
+}
+
+/*********
+ * Month
+ *********/
+export interface BasicMonth extends Identifiable {
+    /** The month number */
+    number: number;
+    /** Basic Page Information */
+    page: BasicPage;
+    /** Timestamp of the last time either the month or the page was updated. */
+    updatedAt: string;
+}
+
+export interface Month extends BasicMonth {
+    /** The name of the month (This will override the page title) */
+    name: string;
+    /** The animal identifier this Month is for. */
+    animalId: number;
+}
+
+
+/*********
+ * Others
+ *********/
+
+export interface UrlParams {
+    pageNum?: number;
+    pageSize?: number;
+    search?: string;
+    sort?: string;
 }

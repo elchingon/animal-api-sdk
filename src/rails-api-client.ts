@@ -1,78 +1,27 @@
+import { Queue } from './queue';
+
 export class RailsApiClient {
     public domain: string;
     public isAuth = false;
     private accessToken: string;
-    constructor(domain: string) {
-        this.domain = domain;
-    }
+    public queue = new Queue(Infinity);
 
-    public setAccessToken(token: string) {
-        this.accessToken = token;
-    }
-
-    private headers(): HeadersInit {
-        const headers: { [key: string]: string } = {
-            'Content-Type': 'application/json'
-        };
-
-        if (this.isAuth) {
-            headers['Authorization'] = `Bearer ${this.accessToken}`;
-        }
-
-        return headers;
-    }
-
-    public buildUrl(model: string, id: number | null, apiVersion?: string): string {
-        const baseApiUrl = `${this.domain}api/${(apiVersion || 'v1')}`;
-        return this.buildResource(baseApiUrl, model, id);
-    }
-
-    public buildResource(url: string, model: string, id: number | null = null): string {
-        return `${url}/${model}${id != null ? ('/' + id) : ''}`;
-    }
-
-    public callApi(url: string, method: string, body: any = null): Promise<any> {
-        let jsonBody: string = null;
-        if (body) {
-            body = this.toSnakeCase(body);
-            jsonBody = JSON.stringify(body);
-        }
-
-
-        return fetch(url, {
-            body: jsonBody,
-            headers: this.headers(),
-            method,
-        }).then(res => {
-            console.log(`${url} Response:`, res);
-            return res.json().then(json => {
-                const camelJson = this.toCamelCase(json);
-                camelJson._res = res;
-                switch (res.status) {
-                    case 200:
-                        console.log(`${url} Success:`, camelJson);
-                        break;
-                    case 404:
-                        console.warn(`${url} Warning:`, camelJson);
-                        throw camelJson;
-                    default:
-                        console.error(`${url} Failure:`, camelJson);
-                        throw camelJson;
-                }
-                return camelJson;
-            });
-        });
-    }
-
-    private toCamelCase(obj: any): any {
+    public static toCamelCase(obj: any): any {
         let newObj = {};
+        if (typeof obj === 'string') {
+            return obj.replace(/(\_\w)/g, (k) => {
+                return k[1].toUpperCase();
+            });
+        }
         if (Array.isArray(obj)) {
             newObj = [];
         }
         for (const d in obj) {
             if (obj.hasOwnProperty(d)) {
                 if (obj[d] == null) {
-                    newObj[d.split(/(?=[A-Z])/).join('_').toLowerCase()] = null;
+                    newObj[d.replace(/(\_\w)/g, (k) => {
+                        return k[1].toUpperCase();
+                    })] = null;
                     continue;
                 }
                 if (typeof obj[d] === 'object') {
@@ -86,7 +35,7 @@ export class RailsApiClient {
         return newObj;
     }
 
-    private toSnakeCase(obj: {}): any {
+    public static toSnakeCase(obj: {}): any {
         const newObj = {};
 
         for (const d in obj) {
@@ -104,5 +53,92 @@ export class RailsApiClient {
         return newObj;
     }
 
+    constructor(domain: string) {
+        this.domain = domain;
+    }
 
+    public setAccessToken(token: string) {
+        this.accessToken = token;
+        this.isAuth = true;
+    }
+
+    private headers(): HeadersInit {
+        const headers: { [key: string]: string } = {
+            'Content-Type': 'application/json'
+        };
+
+        if (this.isAuth) {
+            headers['Authorization'] = `Bearer ${this.accessToken}`;
+        }
+
+        return headers;
+    }
+
+    public buildUrl(model: string, id?: number, apiVersion?: string): string {
+        const baseApiUrl = `${this.domain}api/${(apiVersion || 'v1')}`;
+        return this.buildResource(baseApiUrl, model, id);
+    }
+
+    public buildResource(url: string, model: string, id: number | null = null): string {
+        return `${url}/${model}${id != null ? ('/' + id) : ''}`;
+    }
+
+    public callApi(url: string | (() => string),
+        method: string,
+        params: any = null,
+        then: (value?: any) => void = (value?: any) => { }): Promise<any> {
+
+        return this.queue.add(() => {
+            let jsonBody: string = null;
+            let fullUrl = url;
+            if (typeof fullUrl === 'function') {
+                fullUrl = fullUrl();
+            }
+            if (method === 'GET') {
+                if (params) {
+                    params = RailsApiClient.toSnakeCase(params);
+
+                    const query = Object.keys(params).map(key => {
+                        const val = params[key];
+                        if (!val) {
+                            return null;
+                        }
+                        return `${key}=${params[key]}`;
+                    }).filter(val => val != null).join('&');
+                    fullUrl += '?' + query;
+                }
+            } else {
+                if (params) {
+                    params = RailsApiClient.toSnakeCase(params);
+                    jsonBody = JSON.stringify(params);
+                }
+            }
+            return fetch(fullUrl, {
+                body: jsonBody,
+                headers: this.headers(),
+                method,
+            }).then(res => {
+                console.log(`${fullUrl} Response:`, res);
+                return res.json().then(json => {
+                    const camelJson = RailsApiClient.toCamelCase(json);
+                    camelJson._res = res;
+                    switch (true) {
+                        case (res.status >= 200 && res.status < 300):
+                            console.log(`${fullUrl} Success:`, camelJson);
+                            break;
+                        case (res.status === 404):
+                            console.warn(`${fullUrl} Warning:`, camelJson);
+                            throw camelJson;
+                        default:
+                            console.error(`${fullUrl} Failure:`, camelJson);
+                            throw camelJson;
+                    }
+                    return camelJson;
+                });
+            }).then(json => {
+                then(json);
+                return json;
+            });
+        });
+    }
 }

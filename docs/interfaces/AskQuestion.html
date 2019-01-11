@@ -1,0 +1,906 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>animal-sdk</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">animal-sdk</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <nav>
+
+    <ul class="list">
+
+        <li class="title">
+            <a href="index.html" data-type="index-link">animal-sdk</a>
+        </li>
+
+        <li class="divider"></li>
+
+
+        <li class="chapter">
+            <a data-type="chapter-link" href="index.html"><span class="fa fa-home"></span>Getting started</a>
+            <ul class="links">
+                    <li class="link">
+                        <a 
+                            
+                             href="overview.html" 
+                             href="overview.html" 
+                            data-type="chapter-link">
+                            <span class="fa fa-fw fa-th"></span>Overview
+                        </a>
+                    </li>
+                    <li class="link">
+                      <a href="index.html" data-type="chapter-link"><span class="fa fa-file-text-o"></span>README</a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter modules">
+            <a data-type="chapter-link" href="modules.html">
+                <div class="menu-toggler linked" data-toggle="collapse"
+                        data-target="#xs-modules-links"
+                >
+                    <span class="fa fa-fw fa-archive"></span>
+                    <span class="link-name">Modules</span>
+                    <span class="fa fa-angle-down"></span>
+                </div>
+            </a>
+            <ul class="links collapse"
+                    id="xs-modules-links"
+                >
+                    <li class="link">
+                        <a href="modules/AnimalSDKModule.html" data-type="entity-link">AnimalSDKModule</a>
+                    </li>
+            </ul>
+        </li>
+
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#xs-classes-links"
+                >
+                <span class="fa fa-fw fa-file-code-o"></span>
+                <span>Classes</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="xs-classes-links"
+                >
+                    <li class="link">
+                        <a href="classes/AnimalService.html" data-type="entity-link">AnimalService</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/ApiStorage.html" data-type="entity-link">ApiStorage</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/MenuItemService.html" data-type="entity-link">MenuItemService</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/ModelService.html" data-type="entity-link">ModelService</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/MonthService.html" data-type="entity-link">MonthService</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/PageService.html" data-type="entity-link">PageService</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/QuestionService.html" data-type="entity-link">QuestionService</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/Queue.html" data-type="entity-link">Queue</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/QueueEntry.html" data-type="entity-link">QueueEntry</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/RailsApiClient.html" data-type="entity-link">RailsApiClient</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/StorageItem.html" data-type="entity-link">StorageItem</a>
+                    </li>
+            </ul>
+        </li>
+
+                <li class="chapter">
+                    <div class="simple menu-toggler" data-toggle="collapse"
+                            data-target="#xs-injectables-links"
+                        >
+                        <span class="fa fa-fw fa-long-arrow-down"></span>
+                        <span>Injectables</span>
+                        <span class="fa fa-angle-down"></span>
+                    </div>
+                    <ul class="links collapse"
+                            id="xs-injectables-links"
+                        >
+                            <li class="link">
+                                <a href="injectables/AnimalSDKService.html" data-type="entity-link">AnimalSDKService</a>
+                            </li>
+                    </ul>
+                </li>
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#xs-interfaces-links"
+                >
+                <span class="fa fa-fw fa-info"></span>
+                <span>Interfaces</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="xs-interfaces-links"
+                >
+                    <li class="link">
+                        <a href="interfaces/Animal.html" data-type="entity-link">Animal</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/AnimalApiCredentials.html" data-type="entity-link">AnimalApiCredentials</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/AnimalSdkConfig.html" data-type="entity-link">AnimalSdkConfig</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/AnimalServiceOptions.html" data-type="entity-link">AnimalServiceOptions</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/AskQuestion.html" data-type="entity-link">AskQuestion</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/BasicMonth.html" data-type="entity-link">BasicMonth</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/BasicPage.html" data-type="entity-link">BasicPage</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/Identifiable.html" data-type="entity-link">Identifiable</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/MenuItem.html" data-type="entity-link">MenuItem</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/ModelServiceOptions.html" data-type="entity-link">ModelServiceOptions</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/Month.html" data-type="entity-link">Month</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/MonthServiceOptions.html" data-type="entity-link">MonthServiceOptions</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/Page.html" data-type="entity-link">Page</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/PageImage.html" data-type="entity-link">PageImage</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/PagingInfo.html" data-type="entity-link">PagingInfo</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/PagingMeta.html" data-type="entity-link">PagingMeta</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/Question.html" data-type="entity-link">Question</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/Updatable.html" data-type="entity-link">Updatable</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/UrlParams.html" data-type="entity-link">UrlParams</a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#xs-miscellaneous-links"
+                >
+                <span class="fa fa-fw fa-cubes"></span>
+                <span>Miscellaneous</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="xs-miscellaneous-links"
+                >
+                    <li class="link">
+                      <a href="miscellaneous/enumerations.html" data-type="entity-link">Enums</a>
+                    </li>
+                    <li class="link">
+                      <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter">
+            <a data-type="chapter-link" href="coverage.html"><span class="fa fa-fw fa-tasks"></span>Documentation coverage</a>
+        </li>
+
+
+    </ul>
+
+</nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+
+    <ul class="list">
+
+        <li class="title">
+            <a href="index.html" data-type="index-link">animal-sdk</a>
+        </li>
+
+        <li class="divider"></li>
+
+            <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+
+        <li class="chapter">
+            <a data-type="chapter-link" href="index.html"><span class="fa fa-home"></span>Getting started</a>
+            <ul class="links">
+                    <li class="link">
+                        <a 
+                            
+                             href="overview.html" 
+                             href="overview.html" 
+                            data-type="chapter-link">
+                            <span class="fa fa-fw fa-th"></span>Overview
+                        </a>
+                    </li>
+                    <li class="link">
+                      <a href="index.html" data-type="chapter-link"><span class="fa fa-file-text-o"></span>README</a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter modules">
+            <a data-type="chapter-link" href="modules.html">
+                <div class="menu-toggler linked" data-toggle="collapse"
+                        data-target="#modules-links"
+                >
+                    <span class="fa fa-fw fa-archive"></span>
+                    <span class="link-name">Modules</span>
+                    <span class="fa fa-angle-down"></span>
+                </div>
+            </a>
+            <ul class="links collapse"
+                    id="modules-links"
+>
+                    <li class="link">
+                        <a href="modules/AnimalSDKModule.html" data-type="entity-link">AnimalSDKModule</a>
+                    </li>
+            </ul>
+        </li>
+
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#classes-links"
+>
+                <span class="fa fa-fw fa-file-code-o"></span>
+                <span>Classes</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="classes-links"
+>
+                    <li class="link">
+                        <a href="classes/AnimalService.html" data-type="entity-link">AnimalService</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/ApiStorage.html" data-type="entity-link">ApiStorage</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/MenuItemService.html" data-type="entity-link">MenuItemService</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/ModelService.html" data-type="entity-link">ModelService</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/MonthService.html" data-type="entity-link">MonthService</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/PageService.html" data-type="entity-link">PageService</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/QuestionService.html" data-type="entity-link">QuestionService</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/Queue.html" data-type="entity-link">Queue</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/QueueEntry.html" data-type="entity-link">QueueEntry</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/RailsApiClient.html" data-type="entity-link">RailsApiClient</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/StorageItem.html" data-type="entity-link">StorageItem</a>
+                    </li>
+            </ul>
+        </li>
+
+                <li class="chapter">
+                    <div class="simple menu-toggler" data-toggle="collapse"
+                            data-target="#injectables-links"
+>
+                        <span class="fa fa-fw fa-long-arrow-down"></span>
+                        <span>Injectables</span>
+                        <span class="fa fa-angle-down"></span>
+                    </div>
+                    <ul class="links collapse"
+                            id="injectables-links"
+>
+                            <li class="link">
+                                <a href="injectables/AnimalSDKService.html" data-type="entity-link">AnimalSDKService</a>
+                            </li>
+                    </ul>
+                </li>
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#interfaces-links"
+>
+                <span class="fa fa-fw fa-info"></span>
+                <span>Interfaces</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="interfaces-links"
+>
+                    <li class="link">
+                        <a href="interfaces/Animal.html" data-type="entity-link">Animal</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/AnimalApiCredentials.html" data-type="entity-link">AnimalApiCredentials</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/AnimalSdkConfig.html" data-type="entity-link">AnimalSdkConfig</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/AnimalServiceOptions.html" data-type="entity-link">AnimalServiceOptions</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/AskQuestion.html" data-type="entity-link">AskQuestion</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/BasicMonth.html" data-type="entity-link">BasicMonth</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/BasicPage.html" data-type="entity-link">BasicPage</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/Identifiable.html" data-type="entity-link">Identifiable</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/MenuItem.html" data-type="entity-link">MenuItem</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/ModelServiceOptions.html" data-type="entity-link">ModelServiceOptions</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/Month.html" data-type="entity-link">Month</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/MonthServiceOptions.html" data-type="entity-link">MonthServiceOptions</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/Page.html" data-type="entity-link">Page</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/PageImage.html" data-type="entity-link">PageImage</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/PagingInfo.html" data-type="entity-link">PagingInfo</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/PagingMeta.html" data-type="entity-link">PagingMeta</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/Question.html" data-type="entity-link">Question</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/Updatable.html" data-type="entity-link">Updatable</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/UrlParams.html" data-type="entity-link">UrlParams</a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#miscellaneous-links"
+>
+                <span class="fa fa-fw fa-cubes"></span>
+                <span>Miscellaneous</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="miscellaneous-links"
+>
+                    <li class="link">
+                      <a href="miscellaneous/enumerations.html" data-type="entity-link">Enums</a>
+                    </li>
+                    <li class="link">
+                      <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter">
+            <a data-type="chapter-link" href="coverage.html"><span class="fa fa-fw fa-tasks"></span>Documentation coverage</a>
+        </li>
+
+
+    </ul>
+
+</nav>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Interfaces</li>
+  <li>AskQuestion</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/animal-sdk.models.ts</code>
+        </p>
+
+
+
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#email">email</a>
+                                </li>
+                                <li>
+                                        <a href="#name">name</a>
+                                </li>
+                                <li>
+                                        <a href="#text">text</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="email"></a>
+                                        <span class="name"><b>email</b><a href="#email"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>email:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The email of the person who asked the question. </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="name"></a>
+                                        <span class="name"><b>name</b><a href="#name"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>name:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The full name of the person who asked the question. </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="text"></a>
+                                        <span class="name"><b>text</b><a href="#text"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>text:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The question that was asked. </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface AnimalApiCredentials {
+    /**
+     * The client identifier of oauth application.
+     */
+    clientId: string;
+    /**
+     * The client secret of oauth application.
+     */
+    clientSecret: string;
+}
+
+export interface AnimalSdkConfig {
+    /**
+     * The domain that the SDK should use in API calls.
+     */
+    domain: string;
+    /**
+     * The client credientals used when connecting to API.
+     */
+    credientals: AnimalApiCredentials;
+}
+
+export interface Identifiable {
+    /**
+     * Model Identifier
+     */
+    id: number;
+}
+
+export interface Animal extends Identifiable {
+    /**
+     * The animals name.
+     */
+    name: string;
+    /**
+     * The date the animal got pregenant.
+     */
+    conceivedOn: string;
+    /**
+     * The animals stream url.
+     */
+    streamUrl: string;
+}
+
+/***************
+ * Page Models
+ ***************/
+export interface BasicPage extends Identifiable {
+    /**
+     * The page title.
+     */
+    title: string;
+    /**
+     * The page description.
+     */
+    description: string;
+    /**
+     * The page body.
+     */
+    body: string;
+    /**
+     * The type of page.
+     * &quot;log&quot;, &quot;month&quot;
+     */
+    pageType: string;
+    /**
+     * An array of images associated with this page.
+     */
+    imageUrls: [PageImage];
+    /**
+     * The time this page was created.
+     */
+    createdAt: string;
+    /**
+     * The last time this page was updated.
+     */
+    updatedAt: string;
+}
+
+export interface Page extends BasicPage {
+    /**
+     * The page status.
+     * &quot;draft&quot;, &quot;published&quot;
+     */
+    status: string;
+    /**
+     * A link to a video associated with this page.
+     */
+    videoUrl?: string;
+    /**
+     * A link to more information about this page.
+     */
+    moreInfoUrl?: string;
+}
+
+
+export interface PageImage extends Identifiable {
+    /**
+     * Url to the image.
+     */
+    url: string;
+    /**
+     * Image&#x27;s filename.
+     */
+    filename: string;
+}
+
+/*****************
+ * Question Models
+ *****************/
+export interface Question extends Identifiable {
+    /** The full name of the person who asked the question. */
+    name: string;
+    /** The email of the person who asked the question. */
+    email: string;
+    /** The question that was asked. */
+    text: string;
+    /** The status of the question
+     *  &quot;asked&quot;, &quot;answered&quot;
+     */
+    status: string;
+    /** The response to the question. */
+    response: string;
+    /** The user id of the person who responsed. */
+    respondedById: number;
+    /** The date the question was created. */
+    createdAt: string;
+    /** The date the question was updated */
+    updatedAt: string;
+}
+
+export interface AskQuestion {
+    /** The full name of the person who asked the question. */
+    name: string;
+    /** The email of the person who asked the question. */
+    email: string;
+    /** The question that was asked. */
+    text: string;
+}
+
+/********************
+ *  Menu Item Models
+ ********************/
+
+export interface MenuItem extends Identifiable {
+    /** The page identifier this menu item should go to. */
+    pageId: number;
+    /** The position on the menu item in the side bar. */
+    position: number;
+    /** The name of the menu item. */
+    name: string;
+}
+
+/******************
+ *  Paging Models
+ ******************/
+/** Models used for pagination. */
+
+export interface PagingMeta {
+    /**
+     * The number of total pages.
+     */
+    pageCount: number;
+    /**
+     * The number of items per page.
+     */
+    pageSize: number;
+}
+
+export interface PagingInfo&lt;T&gt; {
+    /**
+     * Items in the page.
+     */
+    items: [T];
+    /**
+     * Paging information used when paginating.
+     */
+    meta: PagingMeta;
+}
+
+/*********
+ * Month
+ *********/
+export interface BasicMonth extends Identifiable {
+    /** The month number */
+    number: number;
+    /** Basic Page Information */
+    page: BasicPage;
+    /** Timestamp of the last time either the month or the page was updated. */
+    updatedAt: string;
+}
+
+export interface Month extends BasicMonth {
+    /** The name of the month (This will override the page title) */
+    name: string;
+    /** The animal identifier this Month is for. */
+    animalId: number;
+}
+
+
+/*********
+ * Others
+ *********/
+
+export interface UrlParams {
+    pageNum?: number;
+    pageSize?: number;
+    search?: string;
+    sort?: string;
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+        <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'AskQuestion.html';
+        </script>
+
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+       <script src="../js/search/search_index.js"></script>
+
+
+    </body>
+</html>
